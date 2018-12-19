@@ -3,14 +3,33 @@ A   Baby   class and functions that use/test it.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhicheng Kai.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
+
+
+
+    #      -- If this is the FIRST time this method has been called
+    #         since this Baby was created or last fed, then this method prints:
+    # 	             'Baby <your baby's name> is sleeping.'
+    #
+    #      -- If this is the SECOND time this method has been called
+    #         since baby was created or last fed, then this method prints:
+    # 	             'Baby <your baby's name> is awake.  Time for food.'
+    #
+    #      -- If this is the THIRD (OR MORE) time this method has been called
+    #           since baby was created or last fed, then this method prints:
+    #         'Baby <your baby's name> is CRYING uncontrollably!  Feed the Baby!'
+
+
+
+
+
     """
-    After you have made the Baby class, run this module. If your Baby
-    class is correct, the output of the code below should be exactly this:
+    # After you have made the Baby class, run this module. If your Baby
+    # class is correct, the output of the code below should be exactly this:
 
         Hello baby McKinley!
         Hello baby Keegan!
@@ -29,20 +48,17 @@ def main():
         Baby McKinley is CRYING uncontrollably!  Feed the Baby!
         Baby McKinley is CRYING uncontrollably!  Feed the Baby!
     """
-    mckinley = Baby('McKinley')
-    keegan = Baby('Keegan')
 
-    for k in range(2):
-        print('- - - - -')
-        keegan.hour_passes()
-        mckinley.feed_baby()
 
-        for j in range(4):
-            mckinley.hour_passes()
+
+
+
+
+
 
 
 ###############################################################################
-# TODO: 2.
+# DO: 2.
 #
 #  Step 2a:  Implement a class called   Baby   that has a constructor method
 #            (__init__) and two other methods, as described below.
@@ -107,7 +123,34 @@ def main():
 #          """ Brief description of what an object of the class 'is'. """
 #
 ###############################################################################
+    class Baby(object):
+        def __init__(self,name):
+            self.name = name
+            self.Baby = print('Hello baby '+name+'!')
+            self.number_hour_passes = 0
+        def feed_baby(self):
+            self.feed = print('Thank you for feeding baby '+self.name+'.')
+            # Prints 'Thank you for feeding baby <your baby's name >.'
+        def hour_passes(self,x):
+            if x == 0:
+                self.time = print('Baby ' + self.name + ' is sleeping.')
+                self.number_hour_passes = self.number_hour_passes + 1
+            elif x == 1:
+                self.time = print('Baby ' + self.name + ' is awake. Time for food')
+                self.number_hour_passes = self.number_hour_passes + 1
+            else:
+                self.time = print('Baby ' + self.name + ' is CRYING uncontrollably! Feed the Baby!')
 
+    mckinley = Baby('McKinley')
+    keegan = Baby('Keegan')
+
+    for k in range(2):
+        print('- - - - -')
+        keegan.hour_passes(k)
+        mckinley.feed_baby()
+
+        for j in range(4):
+            mckinley.hour_passes(j)
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
